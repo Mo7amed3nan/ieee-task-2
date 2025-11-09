@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IEEE Task 2</title>
+
+  <style>
+    *{
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 2rem;
+      background-color: darkgrey;
+      color: white;
+    }
+    .header{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      height: 30vh;
+    }
+
+    .button button{
+      border-radius: 50%;
+      border: 4px solid rgb(45, 4, 107);
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .button button:hover{
+      background-color: rgba(119, 136, 153, 0.256);
+    }
+
+    .plus{
+      background-color: lightgreen;
+      color: darkgreen;
+    
+    }
+
+    .minus{
+      background-color: lightcoral;
+      color: darkred;
+    }
+
+    .display{
+      font-size: 1.3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .end{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1.5rem;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .end button {
+      background-color: rgb(22, 16, 16, 0.341);
+      border-radius: 30%;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.5rem 0.5rem;
+    }
+
+    .end button:hover {
+      background-color: rgba(127, 38, 38, 0.341);
+      
+    }
+
+    .end input{
+      border-radius: 30px;
+      padding: 0.4rem;
+      text-align: center;
+      background-color: white;
+      font-size: 1rem;
+      color: rgba(20, 1, 1, 0.333);
+    }
+
+  </style>
+</head>
+<body>
+    
+  <div class="header">
+    Incrementor
+  </div>
+
+  <div class="button">
+    <button class="plus">
+      +
+    </button>
+    <button class="minus">
+      -
+    </button>
+  </div>
+
+  <div class="display">
+    Score
+    <div class="number"> 0 </div>
+  </div>
+
+  <div class="end">
+    
+    <input class="incr" type="number" placeholder="Enter an incrementor"> 
+
+  <button class="reset_button">
+    reset
+  </button>
+  </div>
+  <script>
+    let inc = 1;
+
+    const p = document.querySelector(".plus");
+    const m = document.querySelector(".minus");
+    const s = document.querySelector(".number");
+    const i = document.querySelector(".incr");
+    const r = document.querySelector(".reset_button");
+    p.addEventListener('click', ()=>{
+      let val = parseInt(s.textContent);
+      val += inc;
+      s.textContent = val;
+    });
+
+    m.addEventListener('click', ()=>{
+      let val = parseInt(s.textContent);
+      val -= inc;
+      s.textContent = val;
+    });
+
+    i.addEventListener('input', (e) => {
+  
+      let val = i.value;
+      if (val === ''){
+        return;
+      }
+      if (isNaN(val)){
+        alert('please enter a value');
+        return;
+      } 
+      if (parseInt(val) <= 0) {
+        alert('please enter a positive value');
+        return; 
+      }
+      inc = parseInt(val);
+    
+    });
+
+    r.addEventListener('click', ()=>{
+      s.textContent = '0';
+    });
+
+  </script>
+</body>
+</html>
